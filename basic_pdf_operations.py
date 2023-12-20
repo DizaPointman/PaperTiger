@@ -1,5 +1,5 @@
 from pathlib import Path
-from pypdf import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter, PdfMerger
 
 
 #pdf_path = (Path.home()/"Projects/VSCode_Projects/Myfuture/PaperTiger/test_pdfs" /"Pride_and_Prejudice.pdf")
@@ -7,10 +7,15 @@ from pypdf import PdfReader, PdfWriter
 pdf_path = (Path.home()/"Projects/VSCode_Projects/Myfuture/PaperTiger/test_pdfs" /"antrag-sgb2_ba042689.pdf")
 
 #pdf_path = (Path.home()/"Projects/VSCode_Projects/Myfuture/PaperTiger" /"blank.pdf")
+
+reports_dir_append = (Path.home()/"Projects/VSCode_Projects/Myfuture/PaperTiger/test_pdfs/expense_reports")
+
+reports_dir_merge = (Path.home()/"Projects/VSCode_Projects/Myfuture/PaperTiger/test_pdfs/quarterly_report")
     
 
 pdf_reader = PdfReader(pdf_path)
 pdf_writer = PdfWriter(pdf_path)
+pdf_merger = PdfMerger()
 
 def pdf_extract_metadata():
     print("Printing Path")
@@ -78,6 +83,27 @@ def appending_from_reader_to_writer():
     output_pdf.write("appending_from_reader_to_writer.pdf")
 
 def appending_pdfs():
+    for path in reports_dir_append.glob("*.pdf"):
+        print(path.name)
+        
+    expense_reports = sorted(reports_dir_append.glob("*.pdf"))
+    for path in expense_reports:
+        print(f"{path}...: {path.name}")
+        
+    for path in expense_reports:
+        pdf_merger.append(path)
+    pdf_merger.write("appended_expense_reports.pdf")
+    
+def merging_pdfs():
+    #merge 2+ PDF with PdfMerger.merge();similar to .append();except must specify where in output PDF to insert content
+    report_path = reports_dir_merge / "report.pdf"
+    toc_path = reports_dir_merge / "toc.pdf"
+    
+    pdf_merger.append(report_path)
+    pdf_merger.merge(1, toc_path)
+    pdf_merger.write("merged_expense_reports.pdf")
+        
+    
 
 if __name__ == '__main__':
     
@@ -88,3 +114,5 @@ if __name__ == '__main__':
     #extract_single_page_and_write_new_pdf()
     #extract_multiple_pages_and_write_new_pdf()
     #appending_from_reader_to_writer()
+    #appending_pdfs()
+    merging_pdfs()
