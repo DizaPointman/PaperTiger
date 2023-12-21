@@ -39,15 +39,28 @@ Userguide: https://www.reportlab.com/docs/reportlab-userguide.pdf
 
 # Filling PDF Forms
 
+old pdf docs: https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.7old.pdf
+
 https://medium.com/@zwinny/filling-pdf-forms-in-python-the-right-way-eb9592e03dba
+
+https://akdux.com/python/2020/10/31/python-fill-pdf-files/
 
 https://pypi.org/project/fillpdf/
 
+https://pypi.org/project/PyPDFForm/
 https://github.com/chinapandaman/PyPDFForm
 
+https://pypi.org/project/PyMuPDF/
 https://github.com/pymupdf/PyMuPDF
 
 https://pypi.org/project/pdfforms/
 
+https://www.blog.pythonlibrary.org/2018/05/22/filling-pdf-forms-with-python/
+
+https://dev.to/boiledsteak/automatic-pdf-form-filler-web-app-58j9#contents
+pdfjinja: https://github.com/rammie/pdfjinja
+
 
 https://github.com/WestHealth/pdf-form-filler
+https://pypi.org/project/pdfrw/#description
+https://github.com/pmaupin/pdfrw/tree/master
